@@ -19,7 +19,7 @@ RUN apt-get update && \
         libavformat-dev \
         libpq-dev
 
-RUN pip install numpy
+RUN pip install numpy ipython
 
 WORKDIR /
 ENV OPENCV_VERSION="3.4.2"
