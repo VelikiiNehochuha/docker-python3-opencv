@@ -17,7 +17,9 @@ RUN apt-get update && \
         libpng-dev \
         libtiff-dev \
         libavformat-dev \
-        libpq-dev
+        libpq-dev \
+        libgtk2.0-dev \
+        pkg-config
 
 RUN pip install numpy ipython
 
@@ -32,6 +34,7 @@ RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
   -DWITH_CUDA=OFF \
   -DWITH_OPENGL=ON \
   -DWITH_OPENCL=ON \
+  -DWITH_GTK=ON \
   -DWITH_IPP=ON \
   -DWITH_TBB=ON \
   -DWITH_EIGEN=ON \
@@ -47,3 +50,5 @@ RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 && make install \
 && rm /${OPENCV_VERSION}.zip \
 && rm -r /opencv-${OPENCV_VERSION}
+
+RUN pip install matplotlib tf-nightly jupyter
